@@ -37,15 +37,10 @@ int main(){
       display = table[(freq/10)%10];
       wait(1);
       
-      if( i%10== 0)
-          display = 0xBF;
-      else
-          display = table[freq%10];
+      display = table[freq%10]^(1<<7);
       wait(1);
     }
 
-
-    
 
     else{
       redLED = 1;
@@ -62,9 +57,9 @@ int main(){
         }
       }
       else{
-        for(j = 0; j < 2; j += 0.02){
+        for(j = 0; j < 2; j += 0.05){
           Aout = 0.5 + 0.5 * sin(j*3.14159);
-          wait(1./100);
+          wait(1./freq/40);
         }
       }
 
